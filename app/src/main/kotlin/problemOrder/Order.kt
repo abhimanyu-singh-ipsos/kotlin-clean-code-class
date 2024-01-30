@@ -2,10 +2,10 @@ package problemOrder
 
 import Item
 
-// After applying DRY, TDA, YAGNI
+// Exercise 2: What's wrong now?
 class Order(val items: List<Item>) {
     val totalPrice: Double
-        get() = items.sumByDouble { it.price }
+        get() = items.map { it.price * it.quantity }.sum()
 
     val deliveryPrice: Double
         get() = 2.5
@@ -22,7 +22,11 @@ class Order(val items: List<Item>) {
 }
 
 fun run() {
-    val items: List<Item> = listOf(Item(100.00), Item(250.00))
+    val items: List<Item> = listOf(
+        Item(100.0, 2),
+        Item(200.0, 3),
+        Item(50.0, 4)
+    )
     val order: Order = Order(items = items)
     println("The total price for your order is : ${order.totalPrice}")
     println("The payable price for your order is : ${order.getPayablePrice(15.00)}")
