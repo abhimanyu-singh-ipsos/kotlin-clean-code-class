@@ -3,6 +3,9 @@ package problemOrder
 import Item
 
 // Exercise 2: What's wrong now?
+// 1. total cost of items in one line - clever but hard to understand for people not familiar with collection functions
+// 2. Item data class holds both the price and quantity of an item
+// Should Item has the responsibility for tracking quantity of an item?
 class Order(val items: List<Item>) {
     val totalPrice: Double
         get() = items.map { it.price * it.quantity }.sum()
