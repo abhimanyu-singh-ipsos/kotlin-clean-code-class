@@ -3,6 +3,9 @@ package problemOrder
 import Item
 
 // Exercise: What's wrong with this code?
+// 1. Repetition of code in calculating the prices
+// 2. The Payable Price method is not clear - what is the 20% and 2.5 for?
+// 3. The Order class does not tell but we need to ask
 class Order(val items: List<Item>) {
     fun getTotalPrice(): Double {
         var totalPrice = 0.0
