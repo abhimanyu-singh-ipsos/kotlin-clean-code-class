@@ -1,6 +1,6 @@
 package problemOrder
 import Item
-
+// Exercise: What's wrong with this code?
 class Order(val items: List<Item>) {
     fun getTotalPrice(): Double {
         var totalPrice = 0.0
@@ -20,7 +20,8 @@ class Order(val items: List<Item>) {
 }
 
 fun run() {
-    val items: List<Item> = listOf(Item(1.00), Item(2.50))
+    val items: List<Item> = listOf(Item(100.00), Item(250.00))
     val order: Order = Order(items=items)
-    println(order.getTotalPrice())
+    println( "The total price for your order is : ${order.getTotalPrice()}")
+    println( "The discounted price for your order is : ${order.getDiscountedPrice(15.00)}")
 }
