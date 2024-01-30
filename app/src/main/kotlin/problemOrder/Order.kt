@@ -3,6 +3,7 @@ package problemOrder
 import Item
 import Inventory
 import Customer
+import PrintNotifier
 // Exercise 3: What's wrong now?
 class Order(val items: List<Inventory>, val customer: Customer) {
     val totalPrice: Double
@@ -27,8 +28,8 @@ class Order(val items: List<Inventory>, val customer: Customer) {
         return totalPrice - discount + taxDue + deliveryPrice
     }
 
-    fun notifyCustomer() {
-        println("Dear ${customer.name}, your order payable price is ${totalPrice}")
+    fun createNotification(): String {
+        return "Dear ${customer.name}, your order total is $totalPrice"
     }
 
 }
@@ -43,6 +44,7 @@ fun run() {
     val order: Order = Order(items = items, customer = customer)
     println("The total price for your order is : ${order.totalPrice}")
     println("The payable price for your order is : ${order.getPayablePrice(15.00)}")
-    order.notifyCustomer()
+    val printNotifier = PrintNotifier()
+    printNotifier.notify(order.createNotification())
 }
 
