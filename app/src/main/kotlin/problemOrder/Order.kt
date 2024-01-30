@@ -24,6 +24,6 @@ class Order(val items: List<Item>) {
 fun run() {
     val items: List<Item> = listOf(Item(100.00), Item(250.00))
     val order: Order = Order(items = items)
-    println("The total price for your order is : ${order.getTotalPrice()}")
+    println("The total price for your order is : ${order.totalPrice}")
     println("The payable price for your order is : ${order.getPayablePrice(15.00)}")
 }
