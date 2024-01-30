@@ -1,17 +1,19 @@
 package problemOrder
 
 import Item
+import Inventory
 
 // Exercise 2: What's wrong now?
 // 1. total cost of items in one line - clever but hard to understand for people not familiar with collection functions
 // 2. Item data class holds both the price and quantity of an item
 // Should Item has the responsibility for tracking quantity of an item
-class Order(val items: List<Item>) {
+// tracking inventory (quantity) and the responsibility of pricing could be considered as two separate responsibilities?
+class Order(val items: List<Inventory>) {
     val totalPrice: Double
         get() = {
             var totalCost = 0.0
-            for (item in items) {
-                val costOfItem = item.price * item.quantity
+            for (inventory in items) {
+                val costOfItem = inventory.item.price * inventory.quantity
                 totalCost += costOfItem
             }
             totalCost
@@ -32,10 +34,10 @@ class Order(val items: List<Item>) {
 }
 
 fun run() {
-    val items: List<Item> = listOf(
-        Item(100.0, 2),
-        Item(200.0, 3),
-        Item(50.0, 4)
+    val items = listOf(
+        Inventory(Item(100.0), 2),
+        Inventory(Item(200.0), 3),
+        Inventory(Item(50.0), 4)
     )
     val order: Order = Order(items = items)
     println("The total price for your order is : ${order.totalPrice}")
