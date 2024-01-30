@@ -4,7 +4,7 @@ import Item
 import Inventory
 import Customer
 import PrintNotifier
-// Exercise 3: What's wrong now?
+// Exercise 4: Payments What's wrong now?
 class Order(val items: List<Inventory>, val customer: Customer) {
     val totalPrice: Double
         get() = {
@@ -31,6 +31,9 @@ class Order(val items: List<Inventory>, val customer: Customer) {
     fun createNotification(): String {
         return "Dear ${customer.name}, your order total is $totalPrice"
     }
+    fun pay(amount: Double) {
+        println("${customer.name} paid $amount")
+    }
 
 }
 
@@ -46,5 +49,6 @@ fun run() {
     println("The payable price for your order is : ${order.getPayablePrice(15.00)}")
     val printNotifier = PrintNotifier()
     printNotifier.notify(order.createNotification())
+    order.pay(order.getPayablePrice(15.00))
 }
 
